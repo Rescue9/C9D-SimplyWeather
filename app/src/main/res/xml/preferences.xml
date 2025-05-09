@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <EditTextPreference
+        android:key="api_key"
+        android:title="API Key"
+        android:summary="Enter your OpenWeatherMap API Key"
+        android:defaultValue=""/>
+
+    <SwitchPreferenceCompat
+        android:key="log_info"
+        android:title="Enable Logging"
+        android:summary="Activates all Log.d functions for logcat"
+        android:defaultValue="false" />
+
+    <SwitchPreferenceCompat
+        android:key="imperial_units"
+        android:title="Enable Imperial Units"
+        android:summary="Display values in imperial units instead of metric"
+        android:defaultValue="false" />
+
+</PreferenceScreen>

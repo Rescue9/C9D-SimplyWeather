@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+}
+
+// the following must be added for AndroidIde to read the local.properteies file; where myApiKey is stored
+def localProps = new Properties()
+def localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localProps.load(new FileInputStream(localPropsFile))
+}
+
+def apiKey = "\"${localProps.getProperty("myApiKey", "MISSING_API_KEY")}\""
+println "Loaded API KEY: ${apiKey}"
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.corridor9design.weatherapp"
+        minSdk 19
+        targetSdk 33
+        versionCode 5
+        versionName "1.0.5"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	buildConfigField "String", "MY_API_KEY", apiKey
+    }
+
+    signingConfigs {
+        release {
+            // Specify the name of your keystore file
+            // The file must be located in your module directory
+            storeFile file("signing-key.jks")
+
+            // The keystore password
+            storePassword "MyKeyStorePass123!"
+
+            // The key alias, same as the one you specified with '-alias' argument while creating the keystore
+            keyAlias "myAlias"
+
+            // The key password
+            keyPassword "MyKeyStorePass123!"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures { viewBinding true }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.preference:preference:1.2.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //for getting json data
+    implementation 'com.android.volley:volley:1.2.1'
+    //location - lat, lon
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    //custom progress
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    //swipe refresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    //App Auto Update Feature
+    implementation 'com.google.android.play:core:1.10.3'
+    //For Responsive screen size
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    //Lotti files
+    implementation 'com.airbnb.android:lottie:5.2.0'
+    // Multi Dex Enable
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
