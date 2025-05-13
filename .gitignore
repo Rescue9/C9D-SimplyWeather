@@ -16,3 +16,4 @@ local.properties
 .androidide
 **apikey.xml
 app/signing-key.jks
+/.vscode
