@@ -8,13 +8,13 @@
 
     <SwitchPreferenceCompat
         android:key="log_info"
-        android:title="Enable Logging"
+        android:title="Logging"
         android:summary="Activates all Log.d functions for logcat"
         android:defaultValue="false" />
 
     <SwitchPreferenceCompat
         android:key="imperial_units"
-        android:title="Enable Imperial Units"
+        android:title="Imperial Units"
         android:summary="Display values in imperial units instead of metric"
         android:defaultValue="false" />
 
