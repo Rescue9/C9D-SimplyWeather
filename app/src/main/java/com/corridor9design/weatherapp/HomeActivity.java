@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
         logging = prefs.getBooleanPreference("log_info", false);
         Log.i("LogEnabled", Boolean.toString(logging));
         if (logging){
-            Log.i("BuildCfgAPIKey", BuildConfig.MY_API_KEY);
+            //Log.i("BuildCfgAPIKey", BuildConfig.MY_API_KEY);
             Log.i("PrefsAPIKey", prefs.getStringPreference("api_key", "no prefs api key"));
         }
     }
