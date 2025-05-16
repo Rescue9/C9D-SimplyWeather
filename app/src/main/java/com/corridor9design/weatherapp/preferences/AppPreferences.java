@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp.preferences;
+package com.corridor9design.simplyweather.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;

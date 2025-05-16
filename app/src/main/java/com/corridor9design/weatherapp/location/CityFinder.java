@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp.location;
+package com.corridor9design.simplyweather.location;
 
 import android.content.Context;
 import android.location.Address;

@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp;
+package com.corridor9design.simplyweather;
 
 import org.junit.Test;
 

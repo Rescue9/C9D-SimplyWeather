@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather Forecast</string>
+    <string name="app_name">Simply Weather</string>
     <string name="mic_desc" translatable="false">mic for search</string>
     <string name="day">day</string>
     <string name="pressure">PRESSURE</string>

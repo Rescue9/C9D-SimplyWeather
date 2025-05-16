@@ -1,7 +1,7 @@
-package com.corridor9design.weatherapp.network;
+package com.corridor9design.simplyweather.network;
 
 import android.content.Context;
-import com.corridor9design.weatherapp.location.LocationCord;
+import com.corridor9design.simplyweather.location.LocationCord;
 
 public class URL {
     private String link;

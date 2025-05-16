@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp.utils;
+package com.corridor9design.simplyweather.utils;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

@@ -3,10 +3,11 @@ plugins {
 }
 
 android {
+    namespace "com.corridor9design.simplyweather"
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.corridor9design.weatherapp"
+        applicationId "com.corridor9design.simplyweather"
         minSdk 19
         targetSdk 33
         versionCode 5
@@ -42,8 +43,8 @@ android {
     }
     buildFeatures { viewBinding true }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

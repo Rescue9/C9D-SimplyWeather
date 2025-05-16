@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp.adapter;
+package com.corridor9design.simplyweather.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,11 +18,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.corridor9design.weatherapp.R;
-import com.corridor9design.weatherapp.preferences.AppPreferences;
-import com.corridor9design.weatherapp.update.UpdateUI;
-import com.corridor9design.weatherapp.network.URL;
-import com.corridor9design.weatherapp.utils.FadeAnimations;
+import com.corridor9design.simplyweather.R;
+import com.corridor9design.simplyweather.preferences.AppPreferences;
+import com.corridor9design.simplyweather.update.UpdateUI;
+import com.corridor9design.simplyweather.network.URL;
+import com.corridor9design.simplyweather.utils.FadeAnimations;
 import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.prefs.Preferences;

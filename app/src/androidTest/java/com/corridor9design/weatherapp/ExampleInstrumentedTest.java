@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp;
+package com.corridor9design.simplyweather;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.corridor9design.weatherapp", appContext.getPackageName());
+        assertEquals("com.corridor9design.simplyweather", appContext.getPackageName());
     }
 }

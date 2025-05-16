@@ -1,4 +1,4 @@
-package com.corridor9design.weatherapp.network;
+package com.corridor9design.simplyweather.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

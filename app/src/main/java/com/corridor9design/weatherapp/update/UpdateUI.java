@@ -1,8 +1,8 @@
-package com.corridor9design.weatherapp.update;
+package com.corridor9design.simplyweather.update;
 
 import android.content.Context;
 
-import com.corridor9design.weatherapp.R;
+import com.corridor9design.simplyweather.R;
 
 public class UpdateUI {
 

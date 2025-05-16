@@ -1,7 +1,7 @@
-package com.corridor9design.weatherapp.location;
+package com.corridor9design.simplyweather.location;
 
 import android.util.Log;
-//import com.corridor9design.weatherapp.BuildConfig;
+//import com.corridor9design.simplyweather.BuildConfig;
 
 public class LocationCord {
     

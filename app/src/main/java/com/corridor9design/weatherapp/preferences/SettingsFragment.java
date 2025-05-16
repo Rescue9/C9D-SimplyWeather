@@ -1,6 +1,6 @@
-package com.corridor9design.weatherapp.preferences;
+package com.corridor9design.simplyweather.preferences;
 
-import com.corridor9design.weatherapp.R;
+import com.corridor9design.simplyweather.R;
 
 import android.os.Bundle;
 import androidx.preference.PreferenceFragmentCompat;
