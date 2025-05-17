@@ -63,6 +63,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0' //swipe refresh
     implementation 'com.airbnb.android:lottie:5.2.0' //Lotti files
     implementation 'com.android.volley:volley:1.2.1' //for getting json data
+    implementation 'com.github.bumptech.glide:glide:4.16.0' //for getting icon from url
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' //custom progress
     implementation 'com.google.android.gms:play-services-location:21.0.1' //location - lat, lon
     implementation 'com.google.android.material:material:1.9.0'

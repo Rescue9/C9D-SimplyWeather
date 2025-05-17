@@ -46,6 +46,11 @@ import com.corridor9design.simplyweather.utils.FadeAnimations;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import com.bumptech.glide.Glide;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+
+
 import org.json.JSONException;
 
 import java.text.SimpleDateFormat;
@@ -58,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private final int WEATHER_FORECAST_APP_UPDATE_REQ_CODE = 101;   // for app update
     private static final int PERMISSION_CODE = 1;                   // for user location permission
-    private String name, updated_at, description, temperature, min_temperature, max_temperature, pressure, wind_speed, humidity;
+    private String name, updated_at, description, temperature, min_temperature, max_temperature, pressure, wind_speed, humidity, icon;
     private int condition;
     private long update_time, sunset, sunrise;
     private String city = "";
@@ -185,6 +190,7 @@ public class HomeActivity extends AppCompatActivity {
                 updated_at = new SimpleDateFormat("EEEE hh:mm a", Locale.ENGLISH).format(new Date(update_time * 1000));
 
                 condition = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getInt("id");
+                icon = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("icon");
                 sunrise = response.getJSONArray("daily").getJSONObject(0).getLong("sunrise");
                 sunset = response.getJSONArray("daily").getJSONObject(0).getLong("sunset");
                 description = response.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main");
@@ -222,12 +228,18 @@ public class HomeActivity extends AppCompatActivity {
         binding.layout.nameTv.setText(name);
         updated_at = translate(updated_at);
         binding.layout.updatedAtTv.setText(updated_at);
-        binding.layout.conditionIv.setImageResource(
+        /*binding.layout.conditionIv.setImageResource(
                 getResources().getIdentifier(
                         UpdateUI.getIconID(condition, update_time, sunrise, sunset),
                         "drawable",
                         getPackageName()
-                ));
+                ));*/
+        Glide.with(this).load(UpdateUI.getIconById(icon)).into(binding.layout.conditionIv);
+        // Apply grayscale filter to the ImageView
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0); // 0 means grayscale
+        binding.layout.conditionIv.setColorFilter(new ColorMatrixColorFilter(matrix));
+        
         binding.layout.conditionDescTv.setText(description);
         binding.layout.tempTv.setText(temperature + unitsTemp);
         binding.layout.minTempTv.setText(min_temperature + unitsTemp);

@@ -78,6 +78,13 @@ public class UpdateUI {
         return null;
     }
 
+    public static String getIconById(String id) {
+        if (id == null || id.isEmpty()) {
+            return "";
+        }
+        return "https://openweathermap.org/img/wn/" + id + "@2x.png";
+    }
+
     public static String TranslateDay(String dayToBeTranslated, Context context) {
         switch (dayToBeTranslated.trim()) {
             case "Monday":
