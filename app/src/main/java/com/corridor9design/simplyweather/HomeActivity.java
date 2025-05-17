@@ -46,6 +46,9 @@ import com.corridor9design.simplyweather.utils.FadeAnimations;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import com.bumptech.glide.Glide;
+
+
 import org.json.JSONException;
 
 import java.text.SimpleDateFormat;
@@ -222,12 +225,13 @@ public class HomeActivity extends AppCompatActivity {
         binding.layout.nameTv.setText(name);
         updated_at = translate(updated_at);
         binding.layout.updatedAtTv.setText(updated_at);
-        binding.layout.conditionIv.setImageResource(
+        /*binding.layout.conditionIv.setImageResource(
                 getResources().getIdentifier(
                         UpdateUI.getIconID(condition, update_time, sunrise, sunset),
                         "drawable",
                         getPackageName()
-                ));
+                ));*/
+        glide.with(this).load(updateUI.getIconById(condition)).into(binding.layout.conditionIv);        
         binding.layout.conditionDescTv.setText(description);
         binding.layout.tempTv.setText(temperature + unitsTemp);
         binding.layout.minTempTv.setText(min_temperature + unitsTemp);
