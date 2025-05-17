@@ -12,8 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
-local.properties
 .androidide
-**apikey.xml
-app/signing-key.jks
 /.vscode
+keystore/
+keystore.properties

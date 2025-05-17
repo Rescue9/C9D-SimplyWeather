@@ -2,6 +2,13 @@ plugins {
     id 'com.android.application'
 }
 
+def keystorePropertiesFile = rootProject.file("keystore/keystore.properties")
+def keystoreProperties = new Properties()
+
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace "com.corridor9design.simplyweather"
     compileSdk 33
@@ -19,18 +26,15 @@ android {
 
     signingConfigs {
         release {
-            // Specify the name of your keystore file
-            // The file must be located in your module directory
-            storeFile file("signing-key.jks")
+            storeFile rootProject.file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+ 
+        }
 
-            // The keystore password
-            storePassword "MyKeyStorePass123!"
-
-            // The key alias, same as the one you specified with '-alias' argument while creating the keystore
-            keyAlias "myAlias"
-
-            // The key password
-            keyPassword "MyKeyStorePass123!"
+        debug {
+            // No signing information
         }
     }
 
@@ -39,6 +43,9 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     buildFeatures { viewBinding true }
