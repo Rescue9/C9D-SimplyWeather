@@ -78,11 +78,11 @@ public class UpdateUI {
         return null;
     }
 
-    /** Builds the full OpenWeatherMap icon URL, e.g. "10d" → ".../10d@2x.png". */
     public static String getIconById(String id) {
-        return (id == null || id.isEmpty())
-                ? "" // or throw IllegalArgumentException
-                : "https://openweathermap.org/img/wn/" + id + "@2x.png";
+        if (id == null || id.isEmpty()) {
+            return "";
+        }
+        return "https://openweathermap.org/img/wn/" + id + "@2x.png";
     }
 
     public static String TranslateDay(String dayToBeTranslated, Context context) {
