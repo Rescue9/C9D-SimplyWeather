@@ -19,7 +19,7 @@
         android:defaultValue="false" />
 
     <SwitchPreferenceCompat
-        android:key="24_hour_clock"
+        android:key="use_24_hour"
         android:title="24 Hour Clock"
         android:summary="Display time values in military time"
         android:defaultValue="false" />
