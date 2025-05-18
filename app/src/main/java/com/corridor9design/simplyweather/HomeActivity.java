@@ -43,6 +43,7 @@ import com.corridor9design.simplyweather.preferences.SettingsDialogFragment;
 import com.corridor9design.simplyweather.update.UpdateUI;
 import com.corridor9design.simplyweather.network.URL;
 import com.corridor9design.simplyweather.utils.FadeAnimations;
+import com.corridor9design.simplyweather.utils.UnitsHelper;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
@@ -187,7 +188,7 @@ public class HomeActivity extends AppCompatActivity {
             try {
                 this.name = name;
                 update_time = response.getJSONObject("current").getLong("dt");
-                updated_at = new SimpleDateFormat("EEEE hh:mm a", Locale.ENGLISH).format(new Date(update_time * 1000));
+                updated_at = new SimpleDateFormat(UnitsHelper.is24HourTimeFormat(prefs), Locale.ENGLISH).format(new Date(update_time * 1000));
 
                 condition = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getInt("id");
                 icon = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("icon");
@@ -215,16 +216,9 @@ public class HomeActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void updateUI() {
-        String unitsTemp, unitsSpeed;
-
-        if(prefs.getBooleanPreference("imperial_units", false)){
-            unitsTemp = "°F";
-            unitsSpeed = "mph";
-        } else {
-            unitsTemp = "°C";
-            unitsSpeed = "kph";
-        }
-
+        String unitsTemp = UnitsHelper.getTemperatureUnit(prefs);
+        String unitsSpeed = UnitsHelper.getSpeedUnit(prefs);
+        
         binding.layout.nameTv.setText(name);
         updated_at = translate(updated_at);
         binding.layout.updatedAtTv.setText(updated_at);
