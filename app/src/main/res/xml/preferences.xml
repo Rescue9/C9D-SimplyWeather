@@ -18,4 +18,10 @@
         android:summary="Display values in imperial units instead of metric"
         android:defaultValue="false" />
 
+    <SwitchPreferenceCompat
+        android:key="24_hour_clock"
+        android:title="24 Hour Clock"
+        android:summary="Display time values in military time"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
