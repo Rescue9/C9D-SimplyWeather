@@ -1,8 +1,5 @@
 package com.corridor9design.simplyweather.preferences;
 
-import com.corridor9design.simplyweather.R;
-
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,30 +14,28 @@ public class SettingsDialogFragment extends DialogFragment {
 
     @Nullable
     @Override
-    public android.view.View onCreateView(@NonNull android.view.LayoutInflater inflater,
-                                          @Nullable android.view.ViewGroup container,
-                                          @Nullable Bundle savedInstanceState) {
-                                          
+    public View onCreateView(@NonNull android.view.LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
         FrameLayout frameLayout = new FrameLayout(requireContext());
         containerId = View.generateViewId();
         frameLayout.setId(containerId);
-    
-        // load the SettingsFragment inside this container
+
         if (savedInstanceState == null) {
             getChildFragmentManager()
                 .beginTransaction()
                 .replace(containerId, new SettingsFragment())
                 .commit();
         }
-        
+
         return frameLayout;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        
-        // Optional: Make dialog take up a bit more space
+
         if (getDialog() != null) {
             getDialog().getWindow().setLayout(
                 ViewGroup.LayoutParams.MATCH_PARENT,

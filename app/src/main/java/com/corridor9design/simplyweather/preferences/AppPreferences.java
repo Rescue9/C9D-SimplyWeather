@@ -1,43 +1,75 @@
 package com.corridor9design.simplyweather.preferences;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
+import androidx.datastore.preferences.core.Preferences;
+import androidx.datastore.preferences.core.MutablePreferences;
+import androidx.datastore.preferences.core.PreferencesKeys;
+import androidx.datastore.rxjava2.RxPreferenceDataStoreBuilder;
+import androidx.datastore.rxjava2.RxDataStore;
+
+import io.reactivex.Flowable;
+import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 public class AppPreferences {
 
-    private final SharedPreferences sharedPreferences;
+    private final RxDataStore<Preferences> dataStore;
 
     public AppPreferences(Context context) {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        dataStore = new RxPreferenceDataStoreBuilder(context, "app_preferences").build();
     }
 
-    // Generic getter for any preference
-    public String getStringPreference(String key, String defaultValue) {
-        return sharedPreferences.getString(key, defaultValue);
+    // Get String
+    public Single<String> getStringPreference(String key, String defaultValue) {
+        Preferences.Key<String> dataKey = PreferencesKeys.stringKey(key);
+        return dataStore.data()
+                .map(prefs -> prefs.get(dataKey) != null ? prefs.get(dataKey) : defaultValue)
+                .first(defaultValue);
     }
-    
-    // Generic setter for any preference
+
+    // Set String
     public void setStringPreference(String key, String value) {
-        sharedPreferences.edit().putString(key, value).apply();
+        Preferences.Key<String> dataKey = PreferencesKeys.stringKey(key);
+        dataStore.updateDataAsync(prefsIn -> {
+            MutablePreferences mutable = prefsIn.toMutablePreferences();
+            mutable.set(dataKey, value);
+            return Single.just(mutable);
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
 
-    // Example for other data types
-    public boolean getBooleanPreference(String key, boolean defaultValue) {
-        return sharedPreferences.getBoolean(key, defaultValue);
+    // Get Boolean
+    public Single<Boolean> getBooleanPreference(String key, boolean defaultValue) {
+        Preferences.Key<Boolean> dataKey = PreferencesKeys.booleanKey(key);
+        return dataStore.data()
+                .map(prefs -> prefs.get(dataKey) != null ? prefs.get(dataKey) : defaultValue)
+                .first(defaultValue);
     }
 
+    // Set Boolean
     public void setBooleanPreference(String key, boolean value) {
-        sharedPreferences.edit().putBoolean(key, value).apply();
+        Preferences.Key<Boolean> dataKey = PreferencesKeys.booleanKey(key);
+        dataStore.updateDataAsync(prefsIn -> {
+            MutablePreferences mutable = prefsIn.toMutablePreferences();
+            mutable.set(dataKey, value);
+            return Single.just(mutable);
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
 
-    public int getIntPreference(String key, int defaultValue) {
-        return sharedPreferences.getInt(key, defaultValue);
+    // Get Int
+    public Single<Integer> getIntPreference(String key, int defaultValue) {
+        Preferences.Key<Integer> dataKey = PreferencesKeys.intKey(key);
+        return dataStore.data()
+                .map(prefs -> prefs.get(dataKey) != null ? prefs.get(dataKey) : defaultValue)
+                .first(defaultValue);
     }
 
+    // Set Int
     public void setIntPreference(String key, int value) {
-        sharedPreferences.edit().putInt(key, value).apply();
+        Preferences.Key<Integer> dataKey = PreferencesKeys.intKey(key);
+        dataStore.updateDataAsync(prefsIn -> {
+            MutablePreferences mutable = prefsIn.toMutablePreferences();
+            mutable.set(dataKey, value);
+            return Single.just(mutable);
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
-
-    // Add more methods as needed (like for long, float, etc.)
 }
