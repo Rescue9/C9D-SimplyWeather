@@ -106,12 +106,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // getting data using internet connection
         //getDataUsingNetwork();
-        logging = prefs.getBooleanPreference("log_info", true);
         Log.i("LogEnabled", Boolean.toString(logging));
-        if (logging){
-            //Log.i("BuildCfgAPIKey", BuildConfig.MY_API_KEY);
-            Log.i("PrefsAPIKey", prefs.getStringPreference("api_key", "no prefs api key"));
-        }
+        Log.i("PrefsAPIKey", prefs.getStringPreference("api_key", "no prefs api key"));
     }
 
 
