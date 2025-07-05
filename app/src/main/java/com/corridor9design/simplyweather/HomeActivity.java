@@ -191,7 +191,7 @@ public class HomeActivity extends AppCompatActivity {
                 updated_at = new SimpleDateFormat(UnitsHelper.is24HourTimeFormat(prefs), Locale.ENGLISH).format(new Date(update_time * 1000));
 
                 condition = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getInt("id");
-                icon = response.getJSONArray("daily").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("icon");
+                icon = response.getJSONArray("hourly").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("icon");
                 sunrise = response.getJSONArray("daily").getJSONObject(0).getLong("sunrise");
                 sunset = response.getJSONArray("daily").getJSONObject(0).getLong("sunset");
                 description = response.getJSONObject("current").getJSONArray("weather").getJSONObject(0).getString("main");
