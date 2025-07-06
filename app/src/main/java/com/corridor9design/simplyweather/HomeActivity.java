@@ -174,13 +174,13 @@ public class HomeActivity extends AppCompatActivity {
             client.getLastLocation().addOnSuccessListener(location -> {
                 setLongitudeLatitude(location);
                 city = getCityNameUsingNetwork(this, location);
-                getTodayWeatherInfo(city);
+                getWeatherInfo(city);
             });
         }
     }
     
     @SuppressLint("DefaultLocale")
-    private void getTodayWeatherInfo(String name) {
+    private void getWeatherInfo(String name) {
         URL url = new URL(this, prefs.getStringPreference("api_key", "no prefs api key"), prefs.getBooleanPreference("imperial_units", false));
         Log.i("URL", url.getLink());
         RequestQueue requestQueue = Volley.newRequestQueue(this);
