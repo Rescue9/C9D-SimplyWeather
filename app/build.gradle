@@ -20,7 +20,7 @@ android {
         versionCode 5
         versionName "1.0.5"
         multiDexEnabled true
-
+        setProperty("archivesBaseName", applicationId + "-" + versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
